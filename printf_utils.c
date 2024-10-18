@@ -18,15 +18,48 @@ int	ft_putchar(int fd, char c)
 	return (1);
 }
 
-int	ft_putstr(int fd, char* c)
+int	ft_putstr(int fd, char *s)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (c[i])
-	{
-		ft_putchar(1, c[i]);
-		i++;
-	}
+	while (s[i])
+		i += write(fd, &s[i], 1);
 	return (i);
+}
+
+int	ft_putnbr_base(int fd, int n, char *base)
+{
+	int		len_base;
+	int		count;
+	char	temp_n;
+
+	count = 0;
+	len_base = 0;
+	while (base[len_base])
+		len_base++;
+	if (n < 0)
+	{
+		write (fd, "-", 1);
+		count++;
+		if (n == -2147483648)
+		{
+			write(fd, "2147483648", 11);
+			return (12);
+		}
+		n = -n;
+	}
+	if (n >= len_base)
+		count += ft_putnbr_base(fd, n / len_base, base);
+	temp_n = base[(n % len_base)];
+	write(fd, &temp_n, 1);
+	count++;
+	return (count);
+}
+
+int	ft_putnbr_u_base(int fd, int n, char *base)
+{
+	if (n < 0)
+		n = n *-1;	
+	return (ft_putnbr_base(fd, n, base));
 }

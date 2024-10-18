@@ -20,6 +20,10 @@
 
 int		ft_printf(char const *args, ...);
 int		ft_putchar(int fd, char c);
-int		ft_putstr(int fd, char* c);
+int		ft_putstr(int fd, char *c);
+int		ft_putnbr_base(int fd, int n, char *base);
+int		ft_putnbr_u_base(int fd, int n, char *base);
+
+
 
 #endif /*PRINTF_H*/

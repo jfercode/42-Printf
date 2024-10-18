@@ -40,6 +40,12 @@ static int	parser(char especifier, va_list args)
 		len_writted += ft_putchar(1, va_arg(args, int));
 	else if (especifier == 's')
 		len_writted += ft_putstr(1, va_arg(args, char *));
+	else if (especifier == '%')
+		len_writted += ft_putchar(1, '%');
+	else if (especifier == 'd' || especifier == 'i')
+		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789");
+	else if (especifier == 'u')
+		len_writted += ft_putnbr_u_base(1, va_arg(args, int), "0123456789");
 	return (len_writted);
 }
 
@@ -52,22 +58,23 @@ static int	parser(char especifier, va_list args)
 int	ft_printf(char const *format_string, ...)
 {
 	int			len;
-	int			next_arg;
+	int			total_len;
 	va_list		vargs;
 
 	va_start (vargs, format_string);
 	len = 0;
+	total_len = 0;
 	while (format_string[len])
 	{
-		next_arg = format_string[len];
-		if (next_arg != '%')
-			len += ft_putchar(1, next_arg);
+		if (format_string[len] != '%')
+			total_len += ft_putchar(1, format_string[len]);
 		else
 		{
-			next_arg = format_string[len++];
-			len += parser(format_string[len], vargs);
+			len++;
+			total_len += parser(format_string[len], vargs);
 		}
+		len++;
 	}
 	va_end(vargs);
-	return (len);
+	return (total_len);
 }

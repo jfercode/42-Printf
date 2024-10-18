@@ -10,7 +10,7 @@ SRC_FILES = printf.c printf_utils.c
 
 OBJS = $(SRC_FILES:.c=.o)
 
-MAIN_DIR = ../Extras
+MAIN_DIR = Extras/
 MAIN_SRC = $(MAIN_DIR)/main.c
 MAIN_OBJ = $(MAIN_SRC:.c=.o)
 
