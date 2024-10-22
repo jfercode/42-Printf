@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:22:10 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/10/15 12:22:11 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/10/22 10:51:24 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	ft_putnbr_base(int fd, int n, char *base)
 int	ft_putnbr_u_base(int fd, int n, char *base)
 {
 	if (n < 0)
-		n = n *-1;	
+		return (ft_putstr(fd, "4294967292"));
 	return (ft_putnbr_base(fd, n, base));
 }

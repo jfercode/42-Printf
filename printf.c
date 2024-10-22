@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:21:43 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/10/15 12:21:44 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:08:11 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,20 @@ static int	parser(char especifier, va_list args)
 		len_writted += ft_putchar(1, va_arg(args, int));
 	else if (especifier == 's')
 		len_writted += ft_putstr(1, va_arg(args, char *));
-	else if (especifier == '%')
-		len_writted += ft_putchar(1, '%');
+	else if (especifier == 'p')
+		len_writted += ft_putstr(1, "0x")
+			+ ft_putnbr_base(1, (unsigned long long)
+				va_arg(args, void *), "0123456789abcdef");
 	else if (especifier == 'd' || especifier == 'i')
 		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789");
 	else if (especifier == 'u')
 		len_writted += ft_putnbr_u_base(1, va_arg(args, int), "0123456789");
+	else if (especifier == 'x')
+		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789abcdef");
+	else if (especifier == 'X')
+		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789ABCDEF");
+	else if (especifier == '%')
+		len_writted += ft_putchar(1, '%');
 	return (len_writted);
 }
 
