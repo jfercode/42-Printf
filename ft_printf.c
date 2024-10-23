@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:21:43 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/10/22 12:08:11 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:46:25 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
+#include "ft_printf.h"
 /**
  * @brief  Funcion que sirve para obtener el tipo de variable, escribirla y 
  * aumentar el valor de len
@@ -41,17 +40,15 @@ static int	parser(char especifier, va_list args)
 	else if (especifier == 's')
 		len_writted += ft_putstr(1, va_arg(args, char *));
 	else if (especifier == 'p')
-		len_writted += ft_putstr(1, "0x")
-			+ ft_putnbr_base(1, (unsigned long long)
-				va_arg(args, void *), "0123456789abcdef");
+		len_writted += ft_put_pointr(1, va_arg(args, void *), 1);
 	else if (especifier == 'd' || especifier == 'i')
-		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789");
+		len_writted += ft_putnbr_base(1, va_arg(args, int), DEC);
 	else if (especifier == 'u')
-		len_writted += ft_putnbr_u_base(1, va_arg(args, int), "0123456789");
+		len_writted += ft_putnbr_hex(1, va_arg(args, int), DEC);
 	else if (especifier == 'x')
-		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789abcdef");
+		len_writted += ft_putnbr_hex(1, va_arg(args, int), HEXA);
 	else if (especifier == 'X')
-		len_writted += ft_putnbr_base(1, va_arg(args, int), "0123456789ABCDEF");
+		len_writted += ft_putnbr_hex(1, va_arg(args, int), HEXA_UP);
 	else if (especifier == '%')
 		len_writted += ft_putchar(1, '%');
 	return (len_writted);
@@ -69,6 +66,8 @@ int	ft_printf(char const *format_string, ...)
 	int			total_len;
 	va_list		vargs;
 
+	if (!format_string)
+		return (0);
 	va_start (vargs, format_string);
 	len = 0;
 	total_len = 0;

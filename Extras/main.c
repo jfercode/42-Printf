@@ -1,4 +1,5 @@
-#include "../printf.h"
+#include "../intra-uuid-53b41e81-5179-49fa-a809-c89c46b9f9a1-6123810-jaferna2/ft_printf.h"
+
 
 int	main (void)
 {
@@ -50,9 +51,9 @@ int	main (void)
 	int ft_int_value_03, int_value_03;
 	int num = 10;
 	int *ptr = &num;
-	ft_int_value_03 = ft_printf("%p", (void *)ptr);
+	ft_int_value_03 = ft_printf("%p ", ptr);
 	ft_printf(" || ");
-	int_value_03 = printf("%p", (void *)&ptr);
+	int_value_03 = printf("%p ", ptr);
 	printf("\n");
 
 	if (ft_int_value_03 != int_value_03)
@@ -126,9 +127,9 @@ int	main (void)
 	printf("\n---Case 08 - %%x rule---\n");
     int ft_int_value_08, int_value_08;
     
-    ft_int_value_08 = ft_printf("%x", 255);
+    ft_int_value_08 = ft_printf("%x", -1);
     ft_printf(" || ");
-    int_value_08 = printf("%x", 255);
+    int_value_08 = printf("%x", -1);
     printf("\n");
 
     if (ft_int_value_08 != int_value_08)
