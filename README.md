@@ -1,7 +1,6 @@
 # 42-Printf
 
-Este proyecto implementa la función `ft_printf`, una versión personalizada de la función estándar `printf` en C. 
-La función `ft_printf` reproduce el comportamiento de `printf`, permitiendo formatear y escribir datos en la salida estándar.
+Este proyecto presenta `ft_printf`, una implementación personalizada de la función estándar printf en C. La función `ft_printf` emula el comportamiento de `printf`, permitiendo a los usuarios formatear y mostrar datos en la salida estándar de manera flexible y eficiente. Entre sus características se incluyen la gestión de diferentes tipos de datos, el soporte para especificadores de formato y la capacidad de manejar argumentos variables, lo que la convierte en una herramienta útil para el desarrollo de aplicaciones en C. Este proyecto no solo refuerza el entendimiento de la manipulación de cadenas y la gestión de memoria, sino que también proporciona una base sólida para profundizar en la programación de sistemas y la personalización de funciones estándar en C.
 
 ## Cómo usar
 
