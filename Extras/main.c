@@ -1,4 +1,4 @@
-#include "../intra-uuid-53b41e81-5179-49fa-a809-c89c46b9f9a1-6123810-jaferna2/ft_printf.h"
+#include "../ft_printf.h"
 
 
 int	main (void)
