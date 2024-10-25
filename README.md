@@ -24,8 +24,11 @@ Puedes ajustar las opciones de compilación en el Makefile según tus necesidade
 
 ## Autor
 
-- [@H0ll0wB01](https://github.com/H0ll0wB01)
-
-![Logo](https://avatars.githubusercontent.com/u/102600920?v=4)
-
-![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVInHuUPtp3uiEuvF0aYAkFBUzpnr65b2CDA&s)
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/102600920?v=4" alt="Logo" width="200"/>
+  <br/> 
+  <a href="https://github.com/H0ll0wB01">Javier Fernández Correa</a>
+</div>
+<div align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVInHuUPtp3uiEuvF0aYAkFBUzpnr65b2CDA&s" alt="Logo"/>
+</div>
