@@ -30,7 +30,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-int		ft_printf(char const *args, ...);
+int		ft_printf(int fd, char const *args, ...);
 int		ft_putchar(int fd, char c);
 int		ft_putstr(int fd, char *c);
 int		ft_putnbr_base(int fd, int n, char *base);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 /**
  * @brief  Funcion que sirve para obtener el tipo de variable, escribirla y 
  * aumentar el valor de len
@@ -30,27 +30,27 @@
 • %X Imprime un número hexadecimal (base 16) en mayúsculas.
 • % % para imprimir el símbolo del porcentaje.
 */
-static int	parser(char especifier, va_list args)
+static int	parser(int fd, char especifier, va_list args)
 {
 	int	len_writted;
 
 	len_writted = 0;
 	if (especifier == 'c')
-		len_writted += ft_putchar(1, va_arg(args, int));
+		len_writted += ft_putchar(fd, va_arg(args, int));
 	else if (especifier == 's')
-		len_writted += ft_putstr(1, va_arg(args, char *));
+		len_writted += ft_putstr(fd, va_arg(args, char *));
 	else if (especifier == 'p')
-		len_writted += ft_put_pointr(1, va_arg(args, void *), 1);
+		len_writted += ft_put_pointr(fd, va_arg(args, void *), 1);
 	else if (especifier == 'd' || especifier == 'i')
-		len_writted += ft_putnbr_base(1, va_arg(args, int), DEC);
+		len_writted += ft_putnbr_base(fd, va_arg(args, int), DEC);
 	else if (especifier == 'u')
-		len_writted += ft_putnbr_hex(1, va_arg(args, int), DEC);
+		len_writted += ft_putnbr_hex(fd, va_arg(args, int), DEC);
 	else if (especifier == 'x')
-		len_writted += ft_putnbr_hex(1, va_arg(args, int), HEXA);
+		len_writted += ft_putnbr_hex(fd, va_arg(args, int), HEXA);
 	else if (especifier == 'X')
-		len_writted += ft_putnbr_hex(1, va_arg(args, int), HEXA_UP);
+		len_writted += ft_putnbr_hex(fd, va_arg(args, int), HEXA_UP);
 	else if (especifier == '%')
-		len_writted += ft_putchar(1, '%');
+		len_writted += ft_putchar(fd, '%');
 	return (len_writted);
 }
 
@@ -60,7 +60,7 @@ static int	parser(char especifier, va_list args)
  * los datos en la funcion
  * @return devuelve el total de caracteres impresos.
  */
-int	ft_printf(char const *format_string, ...)
+int	ft_printf(int fd, char const *format_string, ...)
 {
 	int			len;
 	int			total_len;
@@ -74,11 +74,11 @@ int	ft_printf(char const *format_string, ...)
 	while (format_string[len])
 	{
 		if (format_string[len] != '%')
-			total_len += ft_putchar(1, format_string[len]);
+			total_len += ft_putchar(fd, format_string[len]);
 		else
 		{
 			len++;
-			total_len += parser(format_string[len], vargs);
+			total_len += parser(fd, format_string[len], vargs);
 		}
 		len++;
 	}
